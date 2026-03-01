@@ -1,0 +1,207 @@
+/* ═══════════════════════════════════════════════════════
+   RIYA UPADHYAY — PORTFOLIO
+   Color Palette: Warm Peach (#FEE0C6) & Dark Brown (#2F281E)
+   ═══════════════════════════════════════════════════════ */
+
+:root {
+  /* ── Core Palette ── */
+  --brown-deep: #5C4A38;
+  --brown-dark: #443626;
+  --brown-darker: #3A2E20;
+  --brown-light: #7A6450;
+  --brown-muted: #9A856E;
+  --brown-ghost: rgba(92, 74, 56, 0.08);
+
+  --taupe: #D4B896;
+  --taupe-light: #E5CDB0;
+  --taupe-dark: #B49A78;
+  --taupe-ghost: rgba(212, 184, 150, 0.12);
+
+  --peach: #FEE0C6;
+  --peach-light: #FFF0E0;
+  --peach-dark: #E8C4A4;
+  --peach-ghost: rgba(254, 224, 198, 0.1);
+
+  --white: #ffffff;
+  --off-white: #FEE0C6;
+  --cream: #F0D4BC;
+  --warm-gray: #DCC8B0;
+  --gray-medium: #9A9080;
+  --gray-dark: #6B6558;
+
+  /* ── Functional Colors ── */
+  --bg-primary: #2F281E;
+  --bg-secondary: #362F23;
+  --bg-card: rgba(47, 40, 30, 0.75);
+  --bg-glass: rgba(92, 74, 56, 0.08);
+  --border-subtle: rgba(254, 224, 198, 0.15);
+  --border-glow: rgba(254, 224, 198, 0.25);
+
+  --text-primary: #FEE0C6;
+  --text-secondary: rgba(254, 224, 198, 0.7);
+  --text-tertiary: rgba(254, 224, 198, 0.45);
+  --text-accent: #FEE0C6;
+
+  /* ── Typography ── */
+  --font-display: 'Cormorant Garamond', 'Georgia', serif;
+  --font-body: 'DM Sans', 'Helvetica Neue', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  /* ── Spacing ── */
+  --section-padding: clamp(80px, 12vh, 140px);
+  --container-max: 1200px;
+  --container-padding: clamp(20px, 5vw, 80px);
+
+  /* ── Transitions ── */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+
+  /* ── Z-indices ── */
+  --z-nav: 1000;
+  --z-overlay: 900;
+  --z-content: 10;
+  --z-bg: 1;
+}
+
+/* ═══ Reset & Base ═══ */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scrollbar-width: thin;
+  scrollbar-color: var(--brown-deep) var(--bg-primary);
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--brown-deep);
+  border-radius: 3px;
+}
+
+a {
+  color: var(--taupe);
+  text-decoration: none;
+  transition: color 0.3s var(--ease-out-quart);
+}
+a:hover {
+  color: var(--peach);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* ═══ Typography Scale ═══ */
+h1, h2, h3, h4, h5 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+/* ═══ Section Titles ═══ */
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--peach);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.section-label::before {
+  content: '';
+  width: 32px;
+  height: 1px;
+  background: var(--peach);
+  opacity: 0.6;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  font-weight: 300;
+  color: var(--text-primary);
+  margin-bottom: 48px;
+  letter-spacing: -0.02em;
+}
+
+/* ═══ Scroll Animations ═══ */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.9s var(--ease-out-expo), transform 0.9s var(--ease-out-expo);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+.reveal-delay-5 { transition-delay: 0.5s; }
+
+/* ═══ Noise Overlay ═══ */
+.noise-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+}
+
+/* ═══ Container ═══ */
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding-left: var(--container-padding);
+  padding-right: var(--container-padding);
+}
+
+/* ═══ Global Grain ═══ */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(ellipse at 20% 0%, rgba(92, 74, 56, 0.15) 0%, transparent 50%),
+              radial-gradient(ellipse at 80% 100%, rgba(254, 224, 198, 0.06) 0%, transparent 40%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+#root {
+  position: relative;
+  z-index: 1;
+}
